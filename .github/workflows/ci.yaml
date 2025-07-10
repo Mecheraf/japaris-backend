@@ -1,5 +1,7 @@
 name: run integration tests
 
+run-name: Deploy to ${{github.event.pull_request.title || github.ref}} by @${{ github.actor }}
+
 on:
   push:
     branches:
@@ -9,7 +11,6 @@ on:
   pull_request:
     branches:
       - preprod
-      - deployment
       - main
 
 env:
@@ -29,3 +30,15 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm run test
+  close-pull-request:
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    name: Close pull request
+    steps:
+      - name: Close pull request
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"event_type": "close-pull-request"}' \
+          https://api.github.com/repos/${{ github.repository }}/dispatches
+
