@@ -41,7 +41,7 @@ describe('UserController', () => {
     it('should return a user', async () => {
         const expected = { id: 1, name: 'Admin Tanaka' } as User;
         jest.spyOn(service, 'findOne').mockImplementation((id) => Promise.resolve({ ...expected, id }));
-        const result = await controller.findOne(2);
+        const result = await controller.findOne(1);
         expect(result).toEqual(expected);
     });
   });

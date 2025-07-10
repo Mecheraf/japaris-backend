@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - preprod
+      - deployment
+      - main
   pull_request:
     branches:
       - preprod
+      - deployment
+      - main
 
 env:
   NODE_VERSION: 16
