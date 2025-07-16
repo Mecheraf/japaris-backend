@@ -17,6 +17,12 @@ export class UserController {
     return result;
   }
 
+  @Get('email/:email')
+  async findByEmail(@Param('email') email: string): Promise<User | null> {
+    const result = await this.userService.findByEmail(email);
+    return result;
+  }
+
   @Post()
   async create(@Body() createUserDto: User): Promise<User> {
     const user = new User();
@@ -47,5 +53,11 @@ export class UserController {
   @Delete(':id')
   async remove(@Param('id') id: number): Promise<void> {
     return this.userService.remove(id);
+  }
+
+  @Post('forgot-password')
+  async forgotPassword(@Body() forgotPasswordDto: { email: string }): Promise<void> {
+    console.log(forgotPasswordDto.email);
+    return this.userService.forgotPassword(forgotPasswordDto.email);
   }
 }

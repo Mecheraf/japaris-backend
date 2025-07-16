@@ -3,6 +3,7 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { User } from './user.entity';   
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { MailService } from '../services/mail/mail.service';
 
 describe('UserController', () => {
   let controller: UserController;
@@ -15,10 +16,19 @@ describe('UserController', () => {
         {
           provide: getRepositoryToken(User),
           useValue: {
-            find: jest.fn(),
-            findOneBy: jest.fn(),
+            findAll: jest.fn(),
+            findOne: jest.fn(),
             save: jest.fn(),
+            update: jest.fn(),
             delete: jest.fn(),
+            findByEmail: jest.fn(),
+            find: jest.fn(),
+          },
+        },
+        {
+          provide: MailService,
+          useValue: {
+            sendMail: jest.fn(),
           },
         },
       ],
