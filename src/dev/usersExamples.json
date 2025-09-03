@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Admin Tanaka",
+    "email": "admin.tanaka@japari.park",
+    "password": "adminPass123!",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z", 
+    "isAdmin": true,
+    "isActive": true,
+    "nationality": "Japanese"
+  },
+  {
+    "id": 2,
+    "name": "Admin Smith",
+    "email": "admin.smith@japari.park",
+    "password": "adminPass456!",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z",
+    "isAdmin": true,
+    "isActive": true,
+    "nationality": "American"
+  },
+  {
+    "id": 3,
+    "name": "Kaban",
+    "email": "kaban@japari.park",
+    "password": "friendsAreNice123",
+    "createdAt": "2024-01-02T00:00:00Z",
+    "updatedAt": "2024-01-02T00:00:00Z",
+    "isAdmin": false,
+    "isActive": true,
+    "nationality": "Japanese"
+  },
+  {
+    "id": 4,
+    "name": "Serval",
+    "email": "serval@japari.park",
+    "password": "sugoi123!",
+    "createdAt": "2024-01-02T00:00:00Z",
+    "updatedAt": "2024-01-02T00:00:00Z",
+    "isAdmin": false,
+    "isActive": true,
+    "nationality": "South African"
+  },
+  {
+    "id": 5,
+    "name": "Raccoon",
+    "email": "raccoon@japari.park",
+    "password": "washwash123!",
+    "createdAt": "2024-01-03T00:00:00Z",
+    "updatedAt": "2024-01-03T00:00:00Z",
+    "isAdmin": false,
+    "isActive": true,
+    "nationality": "North American"
+  }
+]
