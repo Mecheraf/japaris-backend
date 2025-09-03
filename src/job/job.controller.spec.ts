@@ -16,7 +16,7 @@ describe('JobController', () => {
           provide: getRepositoryToken(Job),
           useValue: {
             find: jest.fn(),
-            findOneBy: jest.fn(),
+            findOne: jest.fn(),
             save: jest.fn(),
             delete: jest.fn(),
           },

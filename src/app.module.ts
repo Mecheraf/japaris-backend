@@ -6,6 +6,10 @@ import { User } from './user/user.entity';
 import { UserModule } from './user/user.module';
 import { Job } from './job/job.entity';
 import { JobModule } from './job/job.module';
+import { Event } from './event/event.entity';
+import { EventModule } from './event/event.module';
+import { Images } from './images/images.entity';
+import { ImagesModule } from './images/images.module';
 import { ConfigModule } from '@nestjs/config';
 import { MailService } from './services/mail/mail.service';
 import { IsAdminModule } from './services/isAdmin/isAdmin.module';
@@ -28,9 +32,11 @@ import { IsAdminService } from './services/isAdmin/isAdmin.service';
       synchronize: true,
       retryAttempts: 6,
     }),
-    TypeOrmModule.forFeature([User, Job]),
+    TypeOrmModule.forFeature([User, Job, Event, Images]),
     UserModule,
     JobModule,
+    EventModule,
+    ImagesModule,
     IsAdminModule,
   ],
   controllers: [AppController],

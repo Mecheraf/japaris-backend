@@ -24,7 +24,7 @@ export class User {
   isAdmin: boolean;
 
   @Column()
-  isActive: boolean;
+  isActive: boolean = false;
 
   @Column()
   nationality: string;

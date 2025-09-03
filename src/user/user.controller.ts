@@ -1,6 +1,7 @@
-import { Controller, Post, Body, Get, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Put, Delete, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
+
 
 @Controller('user')
 export class UserController {
@@ -32,7 +33,7 @@ export class UserController {
     user.createdAt = new Date();
     user.updatedAt = new Date();
     user.isAdmin = createUserDto.isAdmin || false;
-    user.isActive = createUserDto.isActive ?? true;
+    user.isActive = createUserDto.isActive ?? false;
     user.nationality = createUserDto.nationality;
     return this.userService.create(user);
   }
@@ -57,7 +58,11 @@ export class UserController {
 
   @Post('forgot-password')
   async forgotPassword(@Body() forgotPasswordDto: { email: string }): Promise<void> {
-    console.log(forgotPasswordDto.email);
     return this.userService.forgotPassword(forgotPasswordDto.email);
+  }
+
+  @Post('confirm-email')
+  async confirmEmail(@Query('id') id: number, @Query('email') email: string): Promise<void> {
+    return this.userService.confirmEmail(Number(id), email);
   }
 }

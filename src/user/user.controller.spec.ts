@@ -56,21 +56,27 @@ describe('UserController', () => {
     });
   });
 
-/*
+
   describe('create', () => {
     it('should create a user', async () => {
-      const result = await controller.create({ id: -1, name: 'John Doe', email: 'john.doe@example.com', password: 'password', createdAt: new Date(), updatedAt: new Date(), isAdmin: false, isActive: true, nationality: 'American' });
-      expect(result).toEqual({ id: -1, name: 'John Doe', email: 'john.doe@example.com', password: 'password', createdAt: new Date(), updatedAt: new Date(), isAdmin: false, isActive: true, nationality: 'American' });
+      const expected = { id: -1, name: 'John Doe', email: 'john.doe@example.com', password: 'password', createdAt: new Date(), updatedAt: new Date(), isAdmin: false, isActive: true, nationality: 'American' } as User;
+      jest.spyOn(service, 'create').mockImplementation(() => Promise.resolve(expected));
+      const result = await controller.create(expected);
+      expect(result).toEqual(expected);
     });
   });
 
   describe('update', () => {
     it('should update a user', async () => {
-      const result = await controller.update(-1, { name: 'John Doe', email: 'john.doe@example.com', password: 'password', createdAt: new Date(), updatedAt: new Date(), isAdmin: false, isActive: true, nationality: 'American' });
-      expect(result).toEqual({ id: -1, name: 'John Doe', email: 'john.doe@example.com', password: 'password', createdAt: new Date(), updatedAt: new Date(), isAdmin: false, isActive: true, nationality: 'American' });
+      const expected = { id: 1, name: 'John Doe', email: 'john.doe@example.com', password: 'password', createdAt: new Date(), updatedAt: new Date(), isAdmin: false, isActive: true, nationality: 'American' } as User;
+      jest.spyOn(service, 'findOne').mockImplementation((id) => Promise.resolve({ ...expected, id }));
+      jest.spyOn(service, 'update').mockImplementation((id) => Promise.resolve({ ...expected, id }));
+      const result = await controller.update(1, expected);
+      expect(result).toEqual(expected);
     });
   });
 
+/*
   describe('remove', () => {
     it('should remove a user', async () => {
       const result = await controller.remove(-1);
